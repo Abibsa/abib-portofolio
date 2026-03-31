@@ -1,163 +1,170 @@
 "use client";
 
 import { personalInfo, skills, experiences, projects } from "@/lib/data";
-import { FiMail, FiPhone, FiGithub, FiLinkedin, FiMapPin, FiPrinter } from "react-icons/fi";
+import { FiMail, FiPhone, FiGithub, FiLinkedin, FiMapPin, FiPrinter, FiLayout, FiDatabase, FiAward } from "react-icons/fi";
+import Image from "next/image";
 
 export default function CVPage() {
   return (
-    <div className="bg-white min-h-screen pt-24 md:pt-12 pb-12 text-slate-900 font-sans">
-      {/* Tombol Cetak (Akan disembunyikan saat di-print) */}
-      <div className="container mx-auto px-6 mb-8 flex justify-center print:hidden">
+    <div className="bg-slate-50 min-h-screen pt-12 pb-12 text-slate-800 font-sans print:p-0 print:bg-white overflow-hidden">
+      
+      {/* Tombol Cetak (Tetap disembunyikan saat di-print) */}
+      <div className="container mx-auto px-6 mb-8 flex justify-center print:hidden gap-4">
         <button 
           onClick={() => window.print()}
-          className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold shadow-lg hover:scale-105 transition-all"
+          className="flex items-center gap-2 px-8 py-3 bg-slate-900 dark:bg-primary text-white rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all"
         >
-          <FiPrinter /> Simpan Sebagai PDF / Cetak
+          <FiPrinter /> Cetak CV Futuristik
         </button>
       </div>
 
-      <div className="max-w-[1000px] mx-auto p-8 md:p-12 border-t-8 border-primary bg-slate-50 shadow-sm print:shadow-none print:bg-white print:p-0 print:border-none">
+      <div className="max-w-[1000px] mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row print:shadow-none print:rounded-none print:border-none">
         
-        {/* Header Section */}
-        <header className="flex flex-col md:flex-row justify-between items-start mb-12 border-b-2 border-slate-200 pb-8 gap-8">
-          <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading mb-2">{personalInfo.nama}</h1>
-            <h2 className="text-2xl text-primary font-medium">{personalInfo.title}</h2>
-          </div>
+        {/* SIDEBAR (Dark / Techy) */}
+        <aside className="w-full md:w-[320px] bg-slate-900 text-white p-10 flex flex-col items-center shrink-0 print:bg-slate-900 print:text-white">
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
-            <div className="flex items-center gap-2">
-              <FiMail className="text-primary" /> {personalInfo.email}
+          {/* Profile Container */}
+          <div className="relative w-40 h-40 mb-8 p-1 group">
+            <div className="absolute inset-0 rounded-full border-2 border-primary/50 animate-spin-slow"></div>
+            <div className="w-full h-full rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl relative z-10">
+               <Image 
+                src="/5fa491a0-51ff-49c0-a115-29e49e89f0ff.jpeg" 
+                alt={personalInfo.nama}
+                fill
+                className="object-cover"
+              />
             </div>
-            <div className="flex items-center gap-2 text-wrap">
-              <FiPhone className="text-primary shrink-0" /> {personalInfo.phone}
-            </div>
-            <div className="flex items-center gap-2">
-              <FiMapPin className="text-primary" /> {personalInfo.lokasi}
-            </div>
-            <div className="flex items-center gap-2">
-              <FiGithub className="text-primary" /> github.com/Abibsa
-            </div>
-            {personalInfo.linkedin && (
-              <div className="flex items-center gap-2 col-span-1 sm:col-span-2">
-                <FiLinkedin className="text-primary" /> {personalInfo.linkedin.replace('https://www.linkedin.com/in/', '')}
-              </div>
-            )}
           </div>
-        </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
-          {/* Kolom Kiri - Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            
-            {/* Bio/Profile */}
-            <section>
-              <h3 className="text-xl font-bold font-heading uppercase tracking-widest mb-6 flex items-center gap-3 border-l-4 border-primary pl-4 text-slate-800">Profil Profesional</h3>
-              <p className="text-slate-600 leading-relaxed text-lg">
-                {personalInfo.bio}
-              </p>
-            </section>
+          <div className="text-center mb-10">
+            <h1 className="text-2xl font-bold font-heading mb-2">{personalInfo.nama}</h1>
+            <p className="text-primary font-medium tracking-widest text-sm uppercase">{personalInfo.title}</p>
+          </div>
 
-            {/* Experience & Education */}
-            <section>
-              <h3 className="text-xl font-bold font-heading uppercase tracking-widest mb-6 flex items-center gap-3 border-l-4 border-primary pl-4 text-slate-800">Pengalaman & Pendidikan</h3>
-              <div className="space-y-8">
-                {experiences.map((exp, i) => (
-                  <div key={i} className="relative pl-6 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-primary before:rounded-full after:absolute after:left-[3px] after:top-6 after:bottom-[-24px] after:w-[2px] after:bg-slate-200 last:after:hidden">
-                    <div className="flex justify-between items-baseline mb-2 flex-wrap gap-2">
-                      <h4 className="font-bold text-lg text-slate-800">{exp.posisi}</h4>
-                      <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">{exp.tahun}</span>
-                    </div>
-                    <p className="text-slate-700 font-medium mb-2">{exp.tempat}</p>
-                    <p className="text-slate-500 text-sm">{exp.desc}</p>
+          {/* Contact Details Card */}
+          <div className="w-full space-y-5 text-sm bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiMail size={14}/></div>
+              <span className="truncate">{personalInfo.email}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiPhone size={14}/></div>
+              <span>{personalInfo.phone}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiMapPin size={14}/></div>
+              <span className="text-xs">{personalInfo.lokasi}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiGithub size={14}/></div>
+              <span>Abibsa</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiLinkedin size={14}/></div>
+              <span className="text-[10px]">abib-aziz-a247813bb</span>
+            </div>
+          </div>
+
+          {/* Expert Skills Visual */}
+          <div className="w-full">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 text-slate-500">Expertise</h3>
+            <div className="space-y-6">
+              {skills.map(skill => (
+                <div key={skill.name}>
+                  <div className="flex justify-between text-[11px] mb-2 font-medium">
+                    <span className="text-slate-300">{skill.name}</span>
+                    <span className="text-primary">{skill.level}%</span>
                   </div>
-                ))}
-              </div>
-            </section>
+                  <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary shadow-[0_0_8px_rgba(0,191,255,0.8)]" style={{ width: `${skill.level}%` }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            {/* Selected Projects */}
-            <section>
-              <h3 className="text-xl font-bold font-heading uppercase tracking-widest mb-6 flex items-center gap-3 border-l-4 border-primary pl-4 text-slate-800">Proyek Unggulan</h3>
-              <div className="space-y-6">
-                {projects.map((proj, i) => (
-                  <div key={i} className="p-4 border border-slate-200 rounded-xl bg-white">
-                    <h4 className="font-bold text-slate-800 mb-1">{proj.title}</h4>
-                    <p className="text-sm text-slate-500 mb-3">{proj.desc}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {proj.tech.map(t => (
-                        <span key={t} className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded border border-slate-200">{t}</span>
+          <div className="mt-auto pt-10 text-[10px] text-slate-600 text-center uppercase tracking-widest">
+            Generated by Ashab Dev
+          </div>
+        </aside>
+
+        {/* MAIN CONTENT (Clean / Modern) */}
+        <main className="flex-1 p-12 md:p-16 relative bg-white overflow-hidden">
+          {/* Subtle dotted background decoration */}
+          <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+            <div className="grid grid-cols-6 gap-2">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <div key={i} className="w-1 h-1 bg-slate-900 rounded-full" />
+              ))}
+            </div>
+          </div>
+
+          {/* Section: Profile */}
+          <section className="mb-14">
+            <div className="flex items-center gap-4 mb-6">
+               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiAward size={20}/></div>
+               <h3 className="text-2xl font-bold font-heading text-slate-900">About Me</h3>
+            </div>
+            <p className="text-slate-600 leading-relaxed text-lg font-light">
+              {personalInfo.bio}
+            </p>
+          </section>
+
+          {/* Section: Experience */}
+          <section className="mb-14">
+            <div className="flex items-center gap-4 mb-8">
+               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiLayout size={20}/></div>
+               <h3 className="text-2xl font-bold font-heading text-slate-900">Timeline Experience</h3>
+            </div>
+            <div className="space-y-10 border-l-2 border-slate-100 ml-5 relative">
+              {experiences.map((exp, i) => (
+                <div key={i} className="relative pl-10 group">
+                  <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-white border-4 border-primary shadow-sm group-hover:scale-125 transition-transform"></div>
+                  <div className="flex flex-col mb-1">
+                    <span className="text-xs font-bold text-primary mb-1 uppercase tracking-wider">{exp.tahun}</span>
+                    <h4 className="text-xl font-bold text-slate-800">{exp.posisi}</h4>
+                    <p className="text-slate-500 font-medium">{exp.tempat}</p>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed mt-2">{exp.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section: Featured Projects */}
+          <section>
+            <div className="flex items-center gap-4 mb-8">
+               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiDatabase size={20}/></div>
+               <h3 className="text-2xl font-bold font-heading text-slate-900">Selected Projects</h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {projects.map((proj, i) => (
+                <div key={i} className="p-6 border border-slate-100 rounded-2xl bg-slate-50/50 hover:bg-slate-50 hover:border-primary/20 transition-all group">
+                   <h4 className="font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">{proj.title}</h4>
+                   <p className="text-xs text-slate-500 mb-4 line-clamp-2">{proj.desc}</p>
+                   <div className="flex flex-wrap gap-2">
+                      {proj.tech.slice(0, 3).map(t => (
+                        <span key={t} className="text-[9px] px-2 py-0.5 bg-white text-slate-500 rounded-md border border-slate-100 font-bold">{t}</span>
                       ))}
-                    </div>
-                  </div>
-                ))}
+                   </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Education Summary */}
+          <div className="mt-16 p-6 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-between">
+              <div>
+                <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Currently Studying at</p>
+                <p className="text-sm font-bold text-slate-800">{personalInfo.kampus}</p>
               </div>
-            </section>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-primary">{personalInfo.ipk}</p>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">GPA</p>
+              </div>
           </div>
+        </main>
 
-          {/* Kolom Kanan - Skills & Additional Info */}
-          <div className="lg:col-span-1 space-y-12">
-            
-            {/* Skills */}
-            <section>
-              <h3 className="text-xl font-bold font-heading uppercase tracking-widest mb-6 flex items-center gap-3 border-l-4 border-primary pl-4 text-slate-800">Keahlian</h3>
-              <div className="space-y-10">
-                {/* Frontend */}
-                <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Frontend</h4>
-                  <div className="space-y-4">
-                    {skills.filter(s => s.category === 'frontend').map(skill => (
-                      <div key={skill.name}>
-                        <div className="flex justify-between text-xs mb-1 font-bold">
-                          <span>{skill.name}</span>
-                          <span>{skill.level}%</span>
-                        </div>
-                        <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-primary" style={{ width: `${skill.level}%` }}></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Backend */}
-                <div>
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Backend & Tools</h4>
-                  <div className="space-y-4">
-                    {skills.filter(s => s.category === 'backend').map(skill => (
-                      <div key={skill.name}>
-                        <div className="flex justify-between text-xs mb-1 font-bold">
-                          <span>{skill.name}</span>
-                          <span>{skill.level}%</span>
-                        </div>
-                        <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-primary" style={{ width: `${skill.level}%` }}></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Languages / Education details further */}
-            <section>
-              <h3 className="text-xl font-bold font-heading uppercase tracking-widest mb-6 flex items-center gap-3 border-l-4 border-primary pl-4 text-slate-800">Detail Pendidikan</h3>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <p className="font-bold text-slate-800">{personalInfo.kampus}</p>
-                  <p className="text-slate-500">{personalInfo.jurusan} - Semester {personalInfo.semester}</p>
-                  <p className="text-primary font-bold">GPA: {personalInfo.ipk}</p>
-                </div>
-              </div>
-            </section>
-
-          </div>
-        </div>
-
-        <footer className="mt-16 pt-8 border-t border-slate-200 text-center text-xs text-slate-400 print:block">
-          <p>Generated from Portfolio - {personalInfo.nama}</p>
-        </footer>
       </div>
     </div>
   );
