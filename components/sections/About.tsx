@@ -86,9 +86,9 @@ export default function About() {
                   <FiMail /> Hubungi Saya
                 </button>
               </Link>
-              <a href="/cv.pdf" download className="px-6 py-3 rounded-xl border-2 border-primary text-primary font-medium hover:bg-primary/10 transition-colors flex items-center gap-2">
+              <Link href="/cv" className="px-6 py-3 rounded-xl border-2 border-primary text-primary font-medium hover:bg-primary/10 transition-colors flex items-center gap-2">
                 <FiDownload /> Download CV
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
