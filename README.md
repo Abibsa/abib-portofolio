@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abib's Portfolio
 
-## Getting Started
+A modern, responsive, and high-performance portfolio built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**. This portfolio showcases my projects, professional experience, and technical skills with a premium design and smooth animations.
 
-First, run the development server:
+## 🚀 Built With
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-   **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+-   **Animations:** [Framer Motion](https://www.framer.com/motion/)
+-   **Theming:** [Next-themes](https://github.com/pacocoursey/next-themes) (Dark/Light mode support)
+-   **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+-   **Deployment:** [Vercel](https://vercel.com/)
+
+## ✨ Key Features
+
+-   **Responsive Design:** Optimized for all screen sizes from mobile to desktop.
+-   **Dark/Light Mode:** Seamless transition between themes with `next-themes`.
+-   **Smooth Animations:** Engaging UI interactions powered by Framer Motion.
+-   **Dynamic Sections:**
+    -   **Hero:** Impactful introduction with animated text.
+    -   **Skills:** Categorized technical expertise.
+    -   **Projects:** Showcase of latest work with hovering effects.
+    -   **Experience:** Professional journey timeline.
+    -   **Contact:** Fully functional contact form integration.
+-   **Performance Optimized:** Utilizing Next.js features like Image optimization and standard CSS best practices.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+-   Node.js 18+ 
+-   npm / yarn / pnpm
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Abibsa/abib-portofolio.git
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📁 Project Structure
+
+```text
+├── app/              # Next.js App Router (Layouts & Pages)
+├── components/       # Reusable UI components
+│   ├── sections/     # Main page sections (Hero, About, etc.)
+│   └── ui/           # Primitive UI elements
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions and configurations
+├── context/          # React context providers
+└── public/           # Static assets (images, icons)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📄 License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created with ❤️ by **Abib**
