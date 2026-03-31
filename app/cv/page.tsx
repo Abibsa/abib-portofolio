@@ -6,27 +6,28 @@ import Image from "next/image";
 
 export default function CVPage() {
   return (
-    <div className="bg-slate-50 min-h-screen pt-12 pb-12 text-slate-800 font-sans print:p-0 print:bg-white overflow-hidden">
+    <div className="bg-slate-100 min-h-screen py-10 text-slate-800 font-sans print:p-0 print:bg-white">
       
-      {/* Tombol Cetak (Tetap disembunyikan saat di-print) */}
-      <div className="container mx-auto px-6 mb-8 flex justify-center print:hidden gap-4">
+      {/* Tombol Cetak (Hanya tampil di layar) */}
+      <div className="container mx-auto px-6 mb-6 flex justify-center print:hidden border-b pb-6 border-slate-200">
         <button 
           onClick={() => window.print()}
-          className="flex items-center gap-2 px-8 py-3 bg-slate-900 dark:bg-primary text-white rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all"
+          className="flex items-center gap-2 px-8 py-3 bg-slate-900 text-white rounded-full font-bold shadow-xl hover:scale-105 active:scale-95 transition-all"
         >
-          <FiPrinter /> Cetak CV Futuristik
+          <FiPrinter /> Cetak CV (Hemat Tinta & 1-2 Halaman)
         </button>
       </div>
 
-      <div className="max-w-[1000px] mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row print:shadow-none print:rounded-none print:border-none">
+      {/* CONTAINER UTAMA - Dibuat Fixed Width untuk simulasi A4 */}
+      <div className="max-w-[900px] mx-auto bg-white shadow-2xl flex flex-col md:flex-row print:shadow-none print:max-w-full print:mx-0">
         
-        {/* SIDEBAR (Dark / Techy) */}
-        <aside className="w-full md:w-[320px] bg-slate-900 text-white p-10 flex flex-col items-center shrink-0 print:bg-slate-900 print:text-white">
+        {/* SIDEBAR (Dark - 30% Width) */}
+        <aside className="w-full md:w-[280px] bg-slate-900 text-white p-8 flex flex-col print:bg-slate-900 print:text-white shrink-0 min-h-full">
           
-          {/* Profile Container */}
-          <div className="relative w-40 h-40 mb-8 p-1 group">
-            <div className="absolute inset-0 rounded-full border-2 border-primary/50 animate-spin-slow"></div>
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl relative z-10">
+          {/* Profile Image - Ukuran lebih kompak */}
+          <div className="relative w-32 h-32 mx-auto mb-6">
+            <div className="absolute inset-0 rounded-full border-2 border-primary/30"></div>
+            <div className="w-full h-full rounded-full overflow-hidden border-2 border-slate-700 relative z-10">
                <Image 
                 src="/5fa491a0-51ff-49c0-a115-29e49e89f0ff.jpeg" 
                 alt={personalInfo.nama}
@@ -36,115 +37,109 @@ export default function CVPage() {
             </div>
           </div>
 
-          <div className="text-center mb-10">
-            <h1 className="text-2xl font-bold font-heading mb-2">{personalInfo.nama}</h1>
-            <p className="text-primary font-medium tracking-widest text-sm uppercase">{personalInfo.title}</p>
+          <div className="text-center mb-8">
+            <h1 className="text-xl font-bold font-heading mb-1">{personalInfo.nama}</h1>
+            <p className="text-primary font-medium tracking-widest text-[10px] uppercase">{personalInfo.title}</p>
           </div>
 
-          {/* Contact Details Card */}
-          <div className="w-full space-y-5 text-sm bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 mb-10">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiMail size={14}/></div>
-              <span className="truncate">{personalInfo.email}</span>
+          {/* Contact Details - Lebih Rapat */}
+          <div className="space-y-3 mb-8">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Kontak</h3>
+            <div className="flex items-center gap-2 text-[10px]">
+              <FiMail className="text-primary shrink-0"/> <span className="truncate">{personalInfo.email}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiPhone size={14}/></div>
-              <span>{personalInfo.phone}</span>
+            <div className="flex items-center gap-2 text-[10px]">
+              <FiPhone className="text-primary shrink-0"/> <span>{personalInfo.phone}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiMapPin size={14}/></div>
-              <span className="text-xs">{personalInfo.lokasi}</span>
+            <div className="flex items-center gap-2 text-[10px]">
+              <FiMapPin className="text-primary shrink-0"/> <span>{personalInfo.lokasi}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiGithub size={14}/></div>
-              <span>Abibsa</span>
+            <div className="flex items-center gap-2 text-[10px]">
+              <FiGithub className="text-primary shrink-0"/> <span>Abibsa</span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0"><FiLinkedin size={14}/></div>
-              <span className="text-[10px]">abib-aziz-a247813bb</span>
+            <div className="flex items-center gap-2 text-[10px]">
+              <FiLinkedin className="text-primary shrink-0"/> <span>abib-aziz-a247813bb</span>
             </div>
           </div>
 
-          {/* Expert Skills Visual */}
-          <div className="w-full">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 text-slate-500">Expertise</h3>
-            <div className="space-y-6">
+          {/* Expert Skills Visual - Lebih Kompak */}
+          <div className="mb-8">
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-4">Expertise</h3>
+            <div className="space-y-4">
               {skills.map(skill => (
                 <div key={skill.name}>
-                  <div className="flex justify-between text-[11px] mb-2 font-medium">
+                  <div className="flex justify-between text-[9px] mb-1 font-medium">
                     <span className="text-slate-300">{skill.name}</span>
                     <span className="text-primary">{skill.level}%</span>
                   </div>
                   <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary shadow-[0_0_8px_rgba(0,191,255,0.8)]" style={{ width: `${skill.level}%` }}></div>
+                    <div className="h-full bg-primary" style={{ width: `${skill.level}%` }}></div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-auto pt-10 text-[10px] text-slate-600 text-center uppercase tracking-widest">
-            Generated by Ashab Dev
+          <div className="mt-auto pt-6 text-[8px] text-slate-500 text-center uppercase tracking-widest">
+            {personalInfo.nama} Portfolio
           </div>
         </aside>
 
-        {/* MAIN CONTENT (Clean / Modern) */}
-        <main className="flex-1 p-12 md:p-16 relative bg-white overflow-hidden">
-          {/* Subtle dotted background decoration */}
-          <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
-            <div className="grid grid-cols-6 gap-2">
-              {Array.from({ length: 36 }).map((_, i) => (
-                <div key={i} className="w-1 h-1 bg-slate-900 rounded-full" />
-              ))}
+        {/* MAIN CONTENT (White - 70% Width) */}
+        <main className="flex-1 p-10 md:p-12 relative bg-white print:p-8">
+          {/* Section: Profile Summary */}
+          <section className="mb-10">
+            <div className="flex items-center gap-3 mb-4 border-b border-slate-100 pb-2">
+               <FiAward className="text-primary" size={18}/>
+               <h3 className="text-lg font-bold font-heading text-slate-900 uppercase tracking-wider">Profil Profesional</h3>
             </div>
-          </div>
-
-          {/* Section: Profile */}
-          <section className="mb-14">
-            <div className="flex items-center gap-4 mb-6">
-               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiAward size={20}/></div>
-               <h3 className="text-2xl font-bold font-heading text-slate-900">About Me</h3>
-            </div>
-            <p className="text-slate-600 leading-relaxed text-lg font-light">
+            <p className="text-slate-600 leading-relaxed text-sm">
               {personalInfo.bio}
             </p>
           </section>
 
-          {/* Section: Experience */}
-          <section className="mb-14">
-            <div className="flex items-center gap-4 mb-8">
-               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiLayout size={20}/></div>
-               <h3 className="text-2xl font-bold font-heading text-slate-900">Timeline Experience</h3>
+          {/* Section: Professional Experience */}
+          <section className="mb-10">
+            <div className="flex items-center gap-3 mb-6 border-b border-slate-100 pb-2">
+               <FiLayout className="text-primary" size={18}/>
+               <h3 className="text-lg font-bold font-heading text-slate-900 uppercase tracking-wider">Pengalaman & Pendidikan</h3>
             </div>
-            <div className="space-y-10 border-l-2 border-slate-100 ml-5 relative">
+            <div className="space-y-6">
               {experiences.map((exp, i) => (
-                <div key={i} className="relative pl-10 group">
-                  <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-white border-4 border-primary shadow-sm group-hover:scale-125 transition-transform"></div>
-                  <div className="flex flex-col mb-1">
-                    <span className="text-xs font-bold text-primary mb-1 uppercase tracking-wider">{exp.tahun}</span>
-                    <h4 className="text-xl font-bold text-slate-800">{exp.posisi}</h4>
-                    <p className="text-slate-500 font-medium">{exp.tempat}</p>
+                <div key={i} className="relative pl-5 border-l-2 border-slate-100">
+                  <div className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-primary"></div>
+                  <div className="flex justify-between items-baseline mb-1">
+                    <h4 className="text-sm font-bold text-slate-800 leading-none">{exp.posisi}</h4>
+                    <span className="text-[10px] font-bold text-slate-400">{exp.tahun}</span>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mt-2">{exp.desc}</p>
+                  <p className="text-xs text-primary font-medium mb-1">{exp.tempat}</p>
+                  <p className="text-slate-500 text-[11px] leading-snug">{exp.desc}</p>
+                  {exp.tags && (
+                    <div className="flex gap-2 mt-2">
+                       {exp.tags.map(tag => (
+                         <span key={tag} className="text-[8px] px-1.5 py-0.5 bg-slate-50 text-slate-400 rounded-sm border border-slate-100">{tag}</span>
+                       ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Section: Featured Projects */}
-          <section>
-            <div className="flex items-center gap-4 mb-8">
-               <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800"><FiDatabase size={20}/></div>
-               <h3 className="text-2xl font-bold font-heading text-slate-900">Selected Projects</h3>
+          {/* Section: Selected Projects */}
+          <section className="mb-10">
+            <div className="flex items-center gap-3 mb-6 border-b border-slate-100 pb-2">
+               <FiDatabase className="text-primary" size={18}/>
+               <h3 className="text-lg font-bold font-heading text-slate-900 uppercase tracking-wider">Proyek Pilihan</h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {projects.map((proj, i) => (
-                <div key={i} className="p-6 border border-slate-100 rounded-2xl bg-slate-50/50 hover:bg-slate-50 hover:border-primary/20 transition-all group">
-                   <h4 className="font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">{proj.title}</h4>
-                   <p className="text-xs text-slate-500 mb-4 line-clamp-2">{proj.desc}</p>
-                   <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 gap-4">
+              {projects.slice(0, 4).map((proj, i) => (
+                <div key={i} className="p-4 border border-slate-100 rounded-xl bg-slate-50/30 group">
+                   <h4 className="text-xs font-bold text-slate-800 mb-1">{proj.title}</h4>
+                   <p className="text-[10px] text-slate-500 leading-tight mb-2">{proj.desc}</p>
+                   <div className="flex flex-wrap gap-1">
                       {proj.tech.slice(0, 3).map(t => (
-                        <span key={t} className="text-[9px] px-2 py-0.5 bg-white text-slate-500 rounded-md border border-slate-100 font-bold">{t}</span>
+                        <span key={t} className="text-[8px] text-primary bg-primary/5 px-1 rounded-sm">{t}</span>
                       ))}
                    </div>
                 </div>
@@ -152,15 +147,15 @@ export default function CVPage() {
             </div>
           </section>
 
-          {/* Education Summary */}
-          <div className="mt-16 p-6 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-between">
+          {/* Education Mini Stats */}
+          <div className="mt-10 p-4 rounded-xl bg-slate-900 text-white flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Currently Studying at</p>
-                <p className="text-sm font-bold text-slate-800">{personalInfo.kampus}</p>
+                <p className="text-[8px] font-bold text-primary uppercase tracking-widest mb-0.5">Education Degree</p>
+                <p className="text-xs font-bold text-white uppercase">{personalInfo.jurusan}</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-primary">{personalInfo.ipk}</p>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">GPA</p>
+                <p className="text-xl font-bold text-primary leading-none">{personalInfo.ipk}</p>
+                <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Cumulative GPA</p>
               </div>
           </div>
         </main>
