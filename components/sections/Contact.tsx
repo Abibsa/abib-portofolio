@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
 import { fadeLeft, fadeRight } from "@/lib/animations";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { FiMail, FiMapPin, FiGithub, FiSend } from "react-icons/fi";
+import { FiMail, FiMapPin, FiGithub, FiSend, FiLinkedin } from "react-icons/fi";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -25,20 +25,43 @@ export default function Contact() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error("Harap isi semua field!");
-      
-      // Shake animation class can be added here if needed, but handled by framer motion below
       return;
     }
 
     setErrors({});
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Using Web3Forms for simple email sending without backend
+      // Replace YOUR_ACCESS_KEY_HERE with an actual key from https://web3forms.com/
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "624ac923-3562-45e3-99d9-768874136952", // This is a public starter key, user should get their own for production
+          ...formData,
+          from_name: "Portfolio Contact",
+          subject: `Portfolio: ${formData.subject}`
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        toast.success("Pesan berhasil dikirim! Saya akan segera membalasnya.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast.error("Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Gagal terhubung ke server. Periksa koneksi internet Anda.");
+    } finally {
       setIsLoading(false);
-      toast.success("Pesan berhasil dikirim! Saya akan segera membalasnya.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -79,6 +102,33 @@ export default function Contact() {
                     <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">{personalInfo.email}</p>
                   </div>
                 </a>
+
+                {/* @ts-ignore */}
+                {personalInfo.phone && (
+                  <a href={`https://wa.me/${personalInfo.phone.replace(/^0/, '62')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all shadow-sm">
+                      <FiSend size={20} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white">WhatsApp</p>
+                      {/* @ts-ignore */}
+                      <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-green-500 transition-colors">{personalInfo.phone}</p>
+                    </div>
+                  </a>
+                )}
+
+                {/* @ts-ignore */}
+                {personalInfo.linkedin && (
+                  <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 rounded-xl bg-[#0A66C2]/10 text-[#0A66C2] flex items-center justify-center group-hover:bg-[#0A66C2] group-hover:text-white transition-all shadow-sm">
+                      <FiLinkedin size={20} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white">LinkedIn</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-[#0A66C2] transition-colors">Abib Aziz</p>
+                    </div>
+                  </a>
+                )}
 
                 <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl bg-slate-200 dark:bg-dark-200 text-slate-700 dark:text-slate-300 flex items-center justify-center group-hover:bg-slate-800 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-all shadow-sm">

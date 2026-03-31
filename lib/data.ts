@@ -3,7 +3,9 @@ export const personalInfo = {
   panggilan: 'Ashab',
   title: 'Full Stack Developer',
   email: 'azizabib22@gmail.com',
+  phone: '085878612964',
   github: 'https://github.com/Abibsa',
+  linkedin: 'https://www.linkedin.com/in/abib-aziz-a247813bb/',
   lokasi: 'Jepara, Jawa Tengah, Indonesia',
   kampus: 'UNISNU – Universitas Islam Nahdlatul Ulama Jepara',
   jurusan: 'Teknik Informatika',
@@ -44,6 +46,7 @@ export type Project = {
   demo: string
   badge: string
   badgeColor: string
+  image: string
 }
 
 export const projects: Project[] = [
@@ -56,6 +59,7 @@ export const projects: Project[] = [
     demo: '#',
     badge: 'Laravel',
     badgeColor: '#FF2D20',
+    image: '/projects/project1.jpg',
   },
   {
     title: 'Landing Page Bisnis',
@@ -66,6 +70,7 @@ export const projects: Project[] = [
     demo: '#',
     badge: 'Frontend',
     badgeColor: '#00BFFF',
+    image: '/projects/project2.jpg',
   },
   {
     title: 'Data Mining K-Means',
@@ -76,8 +81,10 @@ export const projects: Project[] = [
     demo: '#',
     badge: 'Python',
     badgeColor: '#3776AB',
+    image: '/projects/project3.jpg',
   },
 ]
+
 
 export type Experience = {
   tahun: string

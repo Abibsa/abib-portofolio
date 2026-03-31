@@ -6,6 +6,7 @@ import { projects, Project } from "@/lib/data";
 import { cardHover } from "@/lib/animations";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
 
 const filters = ["All", "Laravel", "Python", "Frontend"];
 
@@ -54,8 +55,16 @@ export default function Projects() {
                 key={project.title}
                 className="glass rounded-2xl overflow-hidden flex flex-col group border border-slate-200 dark:border-dark-100"
               >
-                <div className="p-6 flex-grow">
-                  <div className="flex justify-between items-start mb-4">
+                {/* Project Image */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-400/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <span 
                       className="text-xs font-bold px-3 py-1 rounded-full text-white shadow-sm"
                       style={{ backgroundColor: project.badgeColor }}
@@ -63,6 +72,9 @@ export default function Projects() {
                       {project.badge}
                     </span>
                   </div>
+                </div>
+
+                <div className="p-6 flex-grow">
 
                   <h3 className="text-xl font-bold font-heading mb-2 text-slate-900 dark:text-white group-hover:text-primary transition-colors">
                     {project.title}

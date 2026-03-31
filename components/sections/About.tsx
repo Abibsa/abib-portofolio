@@ -6,6 +6,7 @@ import { fadeLeft, fadeRight } from "@/lib/animations";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { FiDownload, FiMail } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -26,8 +27,13 @@ export default function About() {
               {/* Rotating border effect */}
               <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary border-r-secondary animate-spin-slow opacity-60"></div>
               
-              <div className="w-full h-full rounded-full bg-slate-200 dark:bg-dark-200 overflow-hidden relative border-4 border-white dark:border-dark-400 z-10 shadow-xl flex items-center justify-center">
-                <span className="text-8xl font-bold text-slate-300 dark:text-dark-100 font-heading">A</span>
+              <div className="w-full h-full rounded-full bg-slate-200 dark:bg-dark-200 overflow-hidden relative border-4 border-white dark:border-dark-400 z-10 shadow-xl">
+                <Image 
+                  src="/5fa491a0-51ff-49c0-a115-29e49e89f0ff.jpeg" 
+                  alt={personalInfo.nama}
+                  fill
+                  className="object-cover"
+                />
               </div>
               
               {/* Floating Badge */}
