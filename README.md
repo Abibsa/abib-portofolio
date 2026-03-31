@@ -21,7 +21,9 @@ A modern, responsive, and high-performance portfolio built with **Next.js 14**, 
     -   **Skills:** Categorized technical expertise.
     -   **Projects:** Showcase of latest work with hovering effects.
     -   **Experience:** Professional journey timeline.
-    -   **Contact:** Fully functional contact form integration.
+    -   **Contact:** Fully functional contact form with **Web3Forms** integration.
+-   **Professional CV Page:** A modern, monochromatic, and print-ready digital CV optimized for high-quality PDF exports.
+-   **SEO Optimized:** Meta descriptions, title tags, and semantic HTML for better visibility.
 -   **Performance Optimized:** Utilizing Next.js features like Image optimization and standard CSS best practices.
 
 ## 🛠️ Getting Started
