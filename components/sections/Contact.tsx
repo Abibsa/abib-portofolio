@@ -103,7 +103,6 @@ export default function Contact() {
                   </div>
                 </a>
 
-                {/* @ts-ignore */}
                 {personalInfo.phone && (
                   <a href={`https://wa.me/${personalInfo.phone.replace(/^0/, '62')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all shadow-sm">
@@ -111,13 +110,11 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-slate-900 dark:text-white">WhatsApp</p>
-                      {/* @ts-ignore */}
-                      <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-green-500 transition-colors">{personalInfo.phone}</p>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-green-500 transition-colors">{personalInfo.phone}</p>
                     </div>
                   </a>
                 )}
 
-                {/* @ts-ignore */}
                 {personalInfo.linkedin && (
                   <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-[#0A66C2]/10 text-[#0A66C2] flex items-center justify-center group-hover:bg-[#0A66C2] group-hover:text-white transition-all shadow-sm">

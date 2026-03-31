@@ -23,7 +23,6 @@ export default function Footer() {
             <FiGithub className="w-5 h-5" />
           </Link>
           
-          {/* @ts-ignore */}
           {personalInfo.linkedin && (
             <Link
               href={personalInfo.linkedin}

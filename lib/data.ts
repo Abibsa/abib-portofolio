@@ -1,4 +1,18 @@
-export const personalInfo = {
+export const personalInfo: {
+  nama: string
+  panggilan: string
+  title: string
+  email: string
+  phone: string
+  github: string
+  linkedin: string
+  lokasi: string
+  kampus: string
+  jurusan: string
+  semester: string
+  ipk: string
+  bio: string
+} = {
   nama: 'Muhammad Ashab Ibnu Abdul Aziz',
   panggilan: 'Ashab',
   title: 'Full Stack Developer',

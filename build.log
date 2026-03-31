@@ -1,0 +1,58 @@
+﻿
+> portfolio@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : Not 
+   Specified: (:String) [], Remo  
+  teException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+Failed to compile.
+
+./components/layout/Footer.tsx
+26:12  Error: Use 
+"@ts-expect-error" instead of 
+"@ts-ignore", as "@ts-ignore" 
+will do nothing if the following 
+line is error-free.  
+@typescript-eslint/ban-ts-comment
+
+./components/sections/Contact.tsx
+106:18  Error: Use 
+"@ts-expect-error" instead of 
+"@ts-ignore", as "@ts-ignore" 
+will do nothing if the following 
+line is error-free.  
+@typescript-eslint/ban-ts-comment
+114:24  Error: Use 
+"@ts-expect-error" instead of 
+"@ts-ignore", as "@ts-ignore" 
+will do nothing if the following 
+line is error-free.  
+@typescript-eslint/ban-ts-comment
+120:18  Error: Use 
+"@ts-expect-error" instead of 
+"@ts-ignore", as "@ts-ignore" 
+will do nothing if the following 
+line is error-free.  
+@typescript-eslint/ban-ts-comment
+
+info  - Need to disable some 
+ESLint rules? Learn more here: htt
+ps://nextjs.org/docs/basic-feature
+s/eslint#disabling-rules
