@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t py-8 border-slate-200 dark:border-dark-300 bg-slate-50 dark:bg-dark-300 text-center">
+    <footer className="border-t py-8 border-slate-200 dark:border-dark-300 bg-slate-50 dark:bg-dark-300 text-center print:hidden">
       <div className="container mx-auto px-6 flex flex-col items-center">
         <h3 className="text-xl font-bold font-heading mb-4 text-slate-900 dark:text-white">
           &lt;Ashab /&gt;
