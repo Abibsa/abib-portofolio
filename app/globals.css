@@ -56,3 +56,15 @@
 
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
+
+@media print {
+  header, 
+  footer, 
+  nav, 
+  .print-hidden,
+  #back-to-top,
+  .toaster-container,
+  .top-progress-bar {
+    display: none !important;
+  }
+}
